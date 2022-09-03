@@ -27,7 +27,7 @@ class _ListViewPageState extends State<ListViewPage> {
 
   ];
 
-  var titleList = [
+  List<String> titleList = [
     '2022학년도 2학기 부산대학교 학점교류 ',
     '2022학년도 2학기 부산대학교 학점교류 ',
     '2022학년도 2학기 부산대학교 학점교류 ',
@@ -58,27 +58,34 @@ class _ListViewPageState extends State<ListViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // leading: Text('Notice',
-        //   style: TextStyle(
-        //       color: Colors.black
-        //   ),
-        // ),
-        actions: [
-          IconButton(onPressed: () {
-
-          }, icon: Icon(Icons.search),
-            color: Colors.grey,
-          ),
-          IconButton(onPressed: () {
-            Scaffold.of(context).openEndDrawer();
-          }, icon: Icon(Icons.settings),
-            color: Colors.grey,
-          ),
-        ],
         backgroundColor: Colors.white,
         elevation: 0,
+        toolbarHeight: 70,
+        title: const Text('Like',
+          style: TextStyle(
+              color: Color(0xff3B3B3B)
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search),
+            color: Color(0xff3B3B3B),
+          ),
+          Builder(
+              builder: (context) {
+                return IconButton(
+                  onPressed: () {
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                  icon: Icon(Icons.settings),
+                  color: Color(0xff3B3B3B),
+                );
+              }
+          )
+        ],
       ),
-      drawer: Drawer(
+      endDrawer: Drawer(
         backgroundColor: Colors.grey,
         child: ListView(
           children: [
@@ -99,123 +106,130 @@ class _ListViewPageState extends State<ListViewPage> {
               child: SizedBox(
                 child: Column(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(7),
-                            border: Border.all(color: const Color(0xff005BAC), width: 1.3),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity((0.5)),
-                              spreadRadius: 0,
-                              blurRadius: 11,
-                              offset: Offset(3, 7)
-                            )
-                          ]
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => NoticePage(titleList)
+                        ));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(7),
+                              border: Border.all(color: const Color(0xff005BAC), width: 1.3),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity((0.5)),
+                                spreadRadius: 0,
+                                blurRadius: 11,
+                                offset: Offset(3, 7)
+                              )
+                            ]
 
-                      ),
-                      child: SizedBox(
-                        height: 140,
-                        width: 370,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(numberList[index],
-                                      style: TextStyle(
-                                        fontSize: 20
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 13,
-                                    ),
-                                    Text(titleList[index],
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                        fontWeight: FontWeight.bold
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(dateList[index],
-                                      style: TextStyle(
-                                        fontSize: 11
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  child: Row(
+                        ),
+                        child: SizedBox(
+                          height: 140,
+                          width: 370,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
-                                        width: 10,
+                                        height: 10,
                                       ),
-                                      Container(
-                                        width: 91,
-                                        height: 18,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xff005BAC),
-                                          borderRadius: BorderRadius.circular(15),
-                                          border: Border.all(color: Color(0xff005BAC), width: 1)
+                                      Text(numberList[index],
+                                        style: TextStyle(
+                                          fontSize: 20
                                         ),
-                                        child: Row(
-                                          children: [
-                                            SizedBox(
-                                                width: 13,),
-                                            Text(majorList[index],
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white
-                                              ),
-                                            ),
-                                          ],
+                                      ),
+                                      SizedBox(
+                                        height: 13,
+                                      ),
+                                      Text(titleList[index],
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                          fontWeight: FontWeight.bold
                                         ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(dateList[index],
+                                        style: TextStyle(
+                                          fontSize: 11
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
                                       ),
                                     ],
                                   ),
-                                ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.favorite),
-                                          SizedBox(
-                                            width: 3,
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Container(
+                                          width: 91,
+                                          height: 18,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xff005BAC),
+                                            borderRadius: BorderRadius.circular(15),
+                                            border: Border.all(color: Color(0xff005BAC), width: 1)
                                           ),
-                                          Text('37')
-                                        ],
-                                      ),
+                                          child: Row(
+                                            children: [
+                                              SizedBox(
+                                                  width: 13,),
+                                              Text(majorList[index],
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(
-                                      width: 10,
-                                    )
-                                  ],
-                                )
-                              ],
-                            )
-                          ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Container(
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.favorite),
+                                            SizedBox(
+                                              width: 3,
+                                            ),
+                                            Text('37')
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      )
+                                    ],
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -232,4 +246,62 @@ class _ListViewPageState extends State<ListViewPage> {
     );
   }
 }
+
+// class NoticePage extends StatefulWidget {
+//   List<String> TEST = ['a'];
+//
+//   // const NoticePage({Key? key}) : super(key: key);
+//
+//   NoticePage(List<String> t) {
+//     TEST = t;
+//   }
+//
+//   @override
+//   State<NoticePage> createState() => _NoticePageState();
+// }
+//
+// class _NoticePageState extends State<NoticePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: GestureDetector(
+//         onTap: (){
+//           Navigator.pop(context);
+//         },
+//         child: Center(
+//           child: Container(
+//             child: Text(TEST[0]),
+//           ),
+//         )
+//       ),
+//     );
+//   }
+// }
+
+class NoticePage extends StatelessWidget {
+  List<String> TEST = ['a'];
+  // const NoticePage({Key? key}) : super(key: key);
+
+  NoticePage(List<String> t) {
+    TEST = t;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GestureDetector(
+          onTap: (){
+            Navigator.pop(context);
+          },
+          child: Center(
+            child: Container(
+              child: Text(TEST[0]),
+            ),
+          )
+      ),
+    );
+  }
+}
+
+
 

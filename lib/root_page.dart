@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:inha_notice_igrus/home_page.dart';
-import 'package:inha_notice_igrus/tags_page.dart';
+import 'package:inha_notice_igrus/notice_page.dart';
 import 'package:inha_notice_igrus/trend_page.dart';
 import 'like_page.dart';
 
@@ -26,8 +25,10 @@ class _RootPageState extends State<RootPage> {
 
   final List<Widget> _pages = [
     HomePage(),
+    TagsPage(),
     TrendPage(),
-    LikePage()
+    LikePage(),
+
   ];
 
   @override
@@ -49,6 +50,8 @@ class _RootPageState extends State<RootPage> {
             tabs: [
               GButton(icon: Icons.home,
               text: 'Home'),
+              GButton(icon: Icons.tag,
+              text: 'Tags',),
               GButton(icon: Icons.trending_up,
               text: 'trend'),
               GButton(icon: Icons.favorite,
